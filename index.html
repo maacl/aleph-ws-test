@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>WebSocket</title>
+<style type="text/css">
+body {text-align:center;
+      text-size:150%;
+      -webkit-font-smoothing: antialiased;
+}
+
+.textInput
+{
+background: #cccccc;
+font-size: 200%;
+-webkit-box-shadow: 1px 1px 2px #211f21;
+-moz-box-shadow: 1px 1px 2px #211f21;
+box-shadow: 1px 1px 2px #211f21; 
+}
+
+.textOutput
+{
+background: #cccccc;
+font-size: 200%;
+
+-webkit-box-shadow: 1px 1px 2px #211f21;
+-moz-box-shadow: 1px 1px 2px #211f21;
+box-shadow: 1px 1px 2px #211f21; 
+}
+
+.button
+{width:100px;
+ height:40px;
+ font-size: 180%}
+</style>
+
+<script>
+   var socket;
+
+  function openWebSocket() {
+     if (window.WebSocket) {
+         socket = new WebSocket('ws://127.0.0.1:10000/');
+         socket.onopen    = function(event) { alert('WebSocket open!');  };
+         socket.onclose   = function(event) { alert('WebSocket closed'); };
+         socket.onmessage = function(event) { parse(event.data);         };
+     } else {
+         alert('Your browser does not support WebSockets yet.');
+     }
+  }
+
+  function closeWebSocket() {
+    socket.close();
+  }
+
+  function $(id) {
+    return document.getElementById(id);
+  }
+
+  function send(message) {
+    if (!window.WebSocket) { return; }
+    if (socket.readyState == WebSocket.OPEN) {
+        socket.send(message);
+    } else {
+        alert('The WebSocket is not open!');
+    }
+  }
+
+  function parse( response ) {
+    // parse response: json or xml, etc
+    $('messages').appendChild(document.createTextNode(response));
+    $('messages').appendChild(document.createTextNode('\n'));
+    $('messages').scrollTop = $('messages').scrollHeight - $('messages').clientHeight;
+  }
+
+</script>
+</head>
+
+<body onload='openWebSocket()' onunload='closeWebSocket()'>
+<BR>
+<INPUT type="text" id="message" class="textInput"><BR><BR>
+<INPUT type="button" value="Send" name="button1" class="button" onClick="send(document.getElementById('message').value)"><BR><BR>
+<textarea rows="20" cols="50" id="messages" class="textOutput">
+</textarea>
+</body>
+</html>
