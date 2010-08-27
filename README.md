@@ -1,6 +1,6 @@
 # aleph-ws-test
 
-Smal test demonstrating use of websockets in Aleph.
+Smal test app demonstrating use of websockets in Aleph.
 
 ## Usage
 
