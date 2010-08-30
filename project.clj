@@ -4,7 +4,9 @@
 	       aleph-ws-test.server]
   :dependencies [[org.clojure/clojure "1.2.0"]
                  [org.clojure/clojure-contrib "1.2.0"]
-		 [aleph "0.1.0-SNAPSHOT"]]
+		 [aleph "0.1.0-SNAPSHOT"]
+		 [ring/ring-core "0.2.5"]
+		 [ring/ring-jetty-adapter "0.2.5"]]
   :dev-dependencies [[swank-clojure "1.2.1"]
 		     [lein-run "1.0.0-SNAPSHOT"]]
   :run-aliases {:server [aleph-ws-test.server -main]})

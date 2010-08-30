@@ -2,6 +2,6 @@
   [:use aleph-ws-test.core])
 
 (defn -main [& [port]]
-  (if port
-    (start-server (Integer/parseInt port))
-    (start-server 10000)))
+  (start-server 10000)
+  (start-policy-server)
+)
