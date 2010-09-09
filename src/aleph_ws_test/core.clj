@@ -5,7 +5,6 @@
 
 (defn rek [msg]
   (println msg)
-  ;; (println @kanaler)
   (doall
    (for [k @kanaler]
      (if (closed? k)

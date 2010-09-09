@@ -8,7 +8,7 @@ lein deps
 
 sudo lein run server
 
-(Please not that lein will complain over being run as root, but this is necessary to run the socket-policy-server on port 843)
+*Please note that lein will complain over being run as root, but this is necessary to run the socket-policy-server on port 843*
 
 Open index.html in a couple of browser tabs and start talking to yourself.
 
