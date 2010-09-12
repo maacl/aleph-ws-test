@@ -84,8 +84,8 @@ box-shadow: 1px 1px 2px #211f21;
 <body onload='openWebSocket()' onunload='closeWebSocket()'>
 <BR>
 
-<INPUT type="text" id="message" class="textInput"><BR><BR>
-<INPUT type="button" value="Send" name="button1" class="button" onClick="send(document.getElementById('message').value)">
+<INPUT type="text" id="message" class="textInput" onkeydown="if (event.keyCode == 13) document.getElementById('button1').click()"><BR><BR>
+<INPUT type="button" value="Send" id="button1" class="button" onClick="send(document.getElementById('message').value)">
 <BR><BR>
 <textarea rows="20" cols="50" id="messages" class="textOutput">
 </textarea>
