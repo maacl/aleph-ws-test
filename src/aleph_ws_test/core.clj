@@ -1,9 +1,13 @@
 (ns aleph-ws-test.core
   [:use aleph.core.channel aleph.formats aleph.http aleph.tcp])
 
+(defn receive-all* [ch f]
+  (receive-all ch #(f ch %)))
+
 (def kanaler (atom #{}))
 
-(defn rek [msg]
+(defn rek [ch msg]
+  (println ch)
   (println msg)
   (doall
    (for [k @kanaler]
@@ -13,7 +17,7 @@
 
 (defn event-loop [channel opt]
   (swap! kanaler conj channel)
-  (receive-all channel rek))
+  (receive-all* channel rek))
 
 (defn start-server [port]
   (start-http-server event-loop {:port port :websocket true}))
