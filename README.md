@@ -20,4 +20,4 @@ See usage.
 
 Copyright (C) 2010 Martin Clausen except index.html which in its original form is Copyright (C) 2010 Martin Zoldano (http://martinzoldano.blogspot.com/2010/01/websockets-netty.html)
 
-Distributed under the Eclipse Public License, the same as Clojure, except index.html which has no apparent license bur is assumed to be in the public domain.
+Distributed under the Eclipse Public License, the same as Clojure, except index.html which has no apparent license but is assumed to be in the public domain.
